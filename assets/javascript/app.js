@@ -9,12 +9,12 @@ $(function () {
         'dragonball z',
         'naturo',
         'scooby doo',
-        'the jetsons',
         'speed racer',
-        'sponge bob', 
+        'sponge bob',
         'doug',
         'rugrats',
-        'courage the cowardly dog'
+        'berserk',
+        'trending'
     ];
 
     //adds buttons from the array. also my ex's favorite pastime
@@ -34,11 +34,12 @@ $(function () {
 
     //function to append user input to button list    
     $("#addGif").on("click", function (event) {
-        event.preventDefault();     //prevents from opening in new page?
-
-        var x = $('#gif-input').val().trim(); //appends the text to the new button
-        gifArr.push(x);  //pushes the user input into the Gif array
-        push_buttons();
+        event.preventDefault();                    //prevents from opening in new page/refresh?
+        var x = $('#gif-input').val().trim();
+        if (x != "") {                            //appends the text to the new button
+            gifArr.push(x);                      //pushes the user input into the Gif array
+            push_buttons();
+        }
     })
 
 
@@ -61,7 +62,7 @@ $(function () {
             var results = response.data;
 
             if (results == "") alert("Gifs not available");
-            
+
             $('#gif-view').empty();
             for (var i = 0; i < results.length; i++) {
                 console.log(btnData)
@@ -74,13 +75,12 @@ $(function () {
                     .attr("data-animate", results[i].images.fixed_height_small.url)
                     .attr("data-state", "still");
                 $IMG.attr("class", "gifIMG");
+
                 gifDiv.append(p);
                 gifDiv.append($IMG);
 
                 $('#gif-view').append(gifDiv); //appends each give to the gif-view div
                 console.log(results[i].rating);
-
-
             }
         })
     };
@@ -92,14 +92,7 @@ $(function () {
         btnData = $(this).attr("data-name");
         var queryURL = "http://api.giphy.com/v1/gifs/search?q="
             + btnData + "&apikey=" + KEY + "&limit=" + newAmount;
-
-        $.ajax({
-            url: queryURL,
-            method: "GET"
-        }).then(function (response) {
-            results = response.data;
-            get_gif();
-        });
+        get_gif();
     }*/
 
 
@@ -116,6 +109,7 @@ $(function () {
                 console.log('case 1');
                 $(this).attr("src", animated);
                 $(this).attr("data-state", "animate");
+                $IMG.attr("data-animate", results[i].images.original.url)
                 break;
             case animated:
                 $(this).attr("src", still);
@@ -128,7 +122,7 @@ $(function () {
 
     $(document).on('click', '.gifIMG', gif_states);
     $(document).on('click', '.gif', get_gif);
-   // $(document).on('click', '#addLimit', increaseAMNT);
+    // $(document).on('click', '#addLimit', increaseAMNT);
 });
 
 
