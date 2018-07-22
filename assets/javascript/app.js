@@ -54,6 +54,8 @@ $(function () {
         console.log(queryURL);
         console.log(btnData);
         //event.preventDefault();
+        
+        
 
         $.ajax({
             url: queryURL,
@@ -62,7 +64,7 @@ $(function () {
             var results = response.data;
 
             if (results == "") alert("Gifs not available");
-
+            
             $('#gif-view').empty();
             for (var i = 0; i < results.length; i++) {
                 console.log(btnData)
@@ -70,9 +72,9 @@ $(function () {
                 var p = $("<p>").text("Gif Rating: " + results[i].rating + ' ');
                 var $IMG = $("<img>");
                 //sets the height of the api results to small, to keep uniformed
-                $IMG.attr("src", results[i].images.fixed_height_small_still.url)
-                    .attr("data-still", results[i].images.fixed_height_small_still.url)
-                    .attr("data-animate", results[i].images.fixed_height_small.url)
+                $IMG.attr("src", results[i].images.original_still.url)
+                    .attr("data-still", results[i].images.original_still.url)
+                    .attr("data-animate", results[i].images.original.url)
                     .attr("data-state", "still");
                 $IMG.attr("class", "gifIMG");
 
@@ -85,15 +87,15 @@ $(function () {
         })
     };
 
-    /*var increaseAMNT = function () {
+    var increaseAMNT = function () {
         console.log('clicked');
         var newAmount = prompt("How many gifs would you like to add?");
         console.log(newAmount);
         btnData = $(this).attr("data-name");
         var queryURL = "http://api.giphy.com/v1/gifs/search?q="
             + btnData + "&apikey=" + KEY + "&limit=" + newAmount;
-        get_gif();
-    }*/
+        
+    }
 
 
 
@@ -109,7 +111,6 @@ $(function () {
                 console.log('case 1');
                 $(this).attr("src", animated);
                 $(this).attr("data-state", "animate");
-                $IMG.attr("data-animate", results[i].images.original.url)
                 break;
             case animated:
                 $(this).attr("src", still);
@@ -122,7 +123,7 @@ $(function () {
 
     $(document).on('click', '.gifIMG', gif_states);
     $(document).on('click', '.gif', get_gif);
-    // $(document).on('click', '#addLimit', increaseAMNT);
+    $(document).on('click', '#addLimit', increaseAMNT);
 });
 
 
