@@ -8,6 +8,7 @@
     <link rel="icon" href="./assets/images/icon" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/reset.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/animate.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/style.css" />
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
@@ -17,34 +18,23 @@
 
     <div class="container">
         <header>
-            <span> 90s Cartoon Gifs</span>
+            <span class="header animated bounce"> 90s Cartoon Gifs</span>
         </header>
-    
+
         <div class="wrapper">
             <div class="buttons"></div>
-            </div>
-            <form id="input-form">
-                <label for="gif-input`"></label><br>
-                <input type="text" id="gif-input">
-                <input id="addGif" type="submit" value="Add Gif">
-            </form>
-         <!--<input id="addLimit" type="submit" value="gif Amount">--> 
-
-            <div id="gif-view"></div>
-            
-            </div>
         </div>
+        <input id="addLimit" type="submit" value="+10 Gifs">
+        <form id="input-form">
+            <label for="gif-input`"></label>
+            <br>
+            <input type="text" id="gif-input">
+            <input id="addGif" type="submit" value="Get More">
+        </form>
 
-
-
-
-
-
+        
+        <div id="gif-view"></div>
     </div>
-    </div>
-
-
-
 
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

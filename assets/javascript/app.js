@@ -1,20 +1,20 @@
 $(function () {
     var KEY = "BGaM1jYG0smzvDDx488IG1gNmV6ENOYB";
     // var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + search + "&apikey=" + APIKey + "&limit=10";
-
+    var gifAmount = 10;
     var gifArr = [
-        'cowboy bepop',
-        'yu yu hakusho',
-        'dragonball',
-        'dragonball z',
-        'naturo',
-        'scooby doo',
-        'speed racer',
-        'sponge bob',
-        'doug',
-        'rugrats',
-        'berserk',
-        'trending'
+        'Neon Genesis Evangellion',
+        'Cowboy Bepop',
+        'Berserk',
+        'Yu Yu Hakusho',
+        'Full Metal Alchemist',
+        'Dragonball Z',
+        'Scooby doo',
+        'Speed Racer',
+        'Sponge Bob',
+        'Doug',
+        'Trending',
+        'Random'
     ];
 
     //adds buttons from the array. also my ex's favorite pastime
@@ -23,11 +23,12 @@ $(function () {
         for (var j = 0; j < gifArr.length; j++) {
 
             var btns = $('<button>');
-            btns.addClass('gif')               //adds class of gif
+            btns.addClass('gif animated fadeInUp')               //adds class of gif
                 .attr('data-name', gifArr[j]) //adds gif as data name
                 .text(gifArr[j]);            //to each index along with text
 
             $('.buttons').append(btns);
+            $('#gif-input').val("");    //clears text from form input after enter.
         }
     }
     push_buttons();
@@ -43,20 +44,19 @@ $(function () {
     })
 
 
-
-    //$(".gif").on('click', function (event){ 
     var get_gif = function () {
-        //push_buttons();
+
         $('.gifIMG').empty();
+
+        if ($('#addLimit').data('clicked')) increaseAMNT();
+            
+        
         btnData = $(this).attr("data-name");
-        var queryURL = "http://api.giphy.com/v1/gifs/search?q="
-            + btnData + "&apikey=" + KEY + "&limit=10";
+        var queryURL = `http://api.giphy.com/v1/gifs/search?q=${btnData}
+            &apikey=${KEY}&limit=${gifAmount}`;
         console.log(queryURL);
         console.log(btnData);
-        //event.preventDefault();
         
-        
-
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -64,11 +64,12 @@ $(function () {
             var results = response.data;
 
             if (results == "") alert("Gifs not available");
-            
+
             $('#gif-view').empty();
             for (var i = 0; i < results.length; i++) {
                 console.log(btnData)
-                var gifDiv = $("<div>");        //appends Rating of each Gif
+                var gifDiv = $('<div>');  
+                       //appends Rating of each Gif
                 var p = $("<p>").text("Gif Rating: " + results[i].rating + ' ');
                 var $IMG = $("<img>");
                 //sets the height of the api results to small, to keep uniformed
@@ -80,24 +81,23 @@ $(function () {
 
                 gifDiv.append(p);
                 gifDiv.append($IMG);
-
-                $('#gif-view').append(gifDiv); //appends each give to the gif-view div
+                $('#gif-view').addClass("ani animated lightSpeedIn");
+                $('#gif-view').append(gifDiv); //appends each give to the gif view div
                 console.log(results[i].rating);
+                console.log(results.length);
+                gifAmount = 10;
             }
         })
     };
-
+    
+    //allows your changing the API limit parameter
+   //Closest I could get to the bonus :\ 
     var increaseAMNT = function () {
-        console.log('clicked');
-        var newAmount = prompt("How many gifs would you like to add?");
-        console.log(newAmount);
-        btnData = $(this).attr("data-name");
-        var queryURL = "http://api.giphy.com/v1/gifs/search?q="
-            + btnData + "&apikey=" + KEY + "&limit=" + newAmount;
+        limitOn = false;
+        gifAmount += 10;
+        console.log('clicked ' + gifAmount);
         
     }
-
-
 
     // function utilizing a switch statement to change the data-state of gif on click
     var gif_states = function () {
