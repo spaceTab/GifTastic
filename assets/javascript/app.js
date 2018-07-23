@@ -52,7 +52,7 @@ $(function () {
             
         
         btnData = $(this).attr("data-name");
-        var queryURL = `http://api.giphy.com/v1/gifs/search?q=${btnData}
+        var queryURL = `https://api.giphy.com/v1/gifs/search?q=${btnData}
             &apikey=${KEY}&limit=${gifAmount}`;
         console.log(queryURL);
         console.log(btnData);
