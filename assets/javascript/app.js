@@ -16,7 +16,7 @@ $(function () {
         'Trending',
         'Random'
     ];
-
+   // $('#gif-view').show();
     $('#gif-view').hide();
     //adds buttons from the array. also my ex's favorite pastime
     var push_buttons = function () {
@@ -46,7 +46,7 @@ $(function () {
 
 
     var get_gif = function () {
-        $('#gif-view').show();
+     //   $('#gif-view').show();
         $('.gifIMG').empty();
 
         if ($('#addLimit').data('clicked')) increaseAMNT();
@@ -72,7 +72,7 @@ $(function () {
                 var gifDiv = $('<div>');  
                        //appends Rating of each Gif
                 var p = $("<p>").text("Gif Rating: " + results[i].rating + ' ');
-                var $IMG = $("<img>").addClass( "ff animated fadeInUp");
+                var $IMG = $("<img>").addClass( "ff animated slideInLeft");
                 //sets the height of the api results to small, to keep uniformed
                 $IMG.attr("src", results[i].images.original_still.url)
                     .attr("data-still", results[i].images.original_still.url)
@@ -82,11 +82,12 @@ $(function () {
 
                 gifDiv.append(p);
                 gifDiv.append($IMG);
-                $('#gif-view').addClass("ani animated bounceInDown");
+                $('#gif-view').addClass("ani animated fadeInDown");
                 $('#gif-view').append(gifDiv); //appends each give to the gif view div
                 console.log(results[i].rating);
                 console.log(results.length);
                 gifAmount = 10;
+                $('#gif-view').show();
             }
         })
     };
