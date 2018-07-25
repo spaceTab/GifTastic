@@ -12,7 +12,7 @@ body {
     margin-left: 25%;
     margin-right: 20%;
     background-clip: content-box;
-    margin-top: 50px;
+    margin-top: 20px;
     position: relative;
 
     background-color: #DFDBE5;
@@ -43,7 +43,7 @@ body {
 }
 header {
     font-family: Arial, Helvetica, sans-serif;
-    line-height: 100px;
+    line-height: 80px;
     font-size: 65px;
     text-align:  center;
     margin-bottom: 30px;
@@ -165,7 +165,7 @@ p {
     padding: 10px 20px;
     font-size: 28px;
     float: right;
-    margin-top: 60px;
+    margin-top: 50px;
     font-family: monospace;
     background-color: #2682af;
     color: #fff;

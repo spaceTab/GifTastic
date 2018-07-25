@@ -17,6 +17,7 @@ $(function () {
         'Random'
     ];
 
+    $('#gif-view').hide();
     //adds buttons from the array. also my ex's favorite pastime
     var push_buttons = function () {
         $('.buttons').empty();
@@ -45,7 +46,7 @@ $(function () {
 
 
     var get_gif = function () {
-
+        $('#gif-view').show();
         $('.gifIMG').empty();
 
         if ($('#addLimit').data('clicked')) increaseAMNT();
