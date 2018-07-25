@@ -72,7 +72,7 @@ $(function () {
                 var gifDiv = $('<div>');  
                        //appends Rating of each Gif
                 var p = $("<p>").text("Gif Rating: " + results[i].rating + ' ');
-                var $IMG = $("<img>");
+                var $IMG = $("<img>").addClass( "ff animated fadeInUp");
                 //sets the height of the api results to small, to keep uniformed
                 $IMG.attr("src", results[i].images.original_still.url)
                     .attr("data-still", results[i].images.original_still.url)
