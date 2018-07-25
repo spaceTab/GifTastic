@@ -16,8 +16,8 @@ $(function () {
         'Trending',
         'Random'
     ];
-   // $('#gif-view').show();
-    $('#gif-view').hide();
+   
+    $('#gif-view').hide(); //hiding to smoothen out transition
     //adds buttons from the array. also my ex's favorite pastime
     var push_buttons = function () {
         $('.buttons').empty();
@@ -46,7 +46,7 @@ $(function () {
 
 
     var get_gif = function () {
-     //   $('#gif-view').show();
+
         $('.gifIMG').empty();
 
         if ($('#addLimit').data('clicked')) increaseAMNT();
