@@ -1,9 +1,12 @@
-/*NOTE: If you're on the git-page adn your screen zoom is larger than 90%
-    or 100% it can cause the buttons to throw a 'glitch' */
+/*NOTE: For optimal viewing, you may want to put zoom to like 70-80%
+    To large can cause the buttons to throw a glitch (or did possibly have
+    fixed)
+    
+    Can you prevent these types of things? or is this just a one off in my 
+    program?*/
 
 * {
-    box-sizing: border-box; /*So I've been using this in all my projects*/
-}                          /* & I don't know really know if I understand it*/
+    box-sizing: border-box; 
 
 body {
     
