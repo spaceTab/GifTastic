@@ -81,7 +81,7 @@ $(function () {
 
                 gifDiv.append(p);
                 gifDiv.append($IMG);
-                $('#gif-view').addClass("ani animated lightSpeedIn");
+                $('#gif-view').addClass("ani animated bounceInDown");
                 $('#gif-view').append(gifDiv); //appends each give to the gif view div
                 console.log(results[i].rating);
                 console.log(results.length);
